@@ -20,7 +20,7 @@ check() {
 	test -d "$srcdir/R2Northstar/mods/Northstar.CustomServers/mod/maps/graphs"
 	test -d "$srcdir/R2Northstar/mods/Northstar.CustomServers/mod/maps/navmesh"
 	test -f "$srcdir/bin/x64_dedi/d3d11.dll"
-}
+} 
 
 package() {
 	rm "$srcdir"/*.zip
