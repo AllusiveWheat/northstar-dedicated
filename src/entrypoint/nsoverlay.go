@@ -119,9 +119,10 @@ func (n *NSOverlay) mergeNS(p string) error {
 			// northstar after v1.10.0 doesn't need this file anymore
 			// northstar until v1.8.1 opens it read/write, so must copy
 			return copyFile(path, filepath.Join(n.Path, r))
+		case "bin/x64_retail":
+    		return filepath.SkipDir // skip entire directory, not just this entry
 		case
 			"discord_game_sdk.dll",
-			"bin/x64_retail",
 			"bin/x64_retail/wsock32.dll",
 			"R2Northstar/plugins/DiscordRPC.dll":
 			return nil
