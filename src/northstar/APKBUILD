@@ -28,5 +28,5 @@ package() {
 	cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
 }
 sha512sums="
-  434720ff941facb974a91eab8395e1bd310a6bde6ae23457c46f90b31cd3fc865196767b4056ad2851c5576c3ac0928f603481a60b2ada3078eab6f82359a287 Ion.release.v$pkgver_ns.zip
+  d5fdb1068a38d9950e2168d237008ebff3d4b5e968f98e5f50c6792876eb99458b7e6ce02e470ea8d12f6c862c65dcccbb5ce630684c860a2f85efa1c3a9e612 Ion.release.v$pkgver_ns.zip
 "
