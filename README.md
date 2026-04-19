@@ -2,8 +2,6 @@
 
 **Docker image for the [Northstar](https://northstar.tf) dedicated server.** <a href="https://github.com/pg9182/northstar-dedicated/actions/workflows/ci.yml"><img src="https://github.com/pg9182/northstar-dedicated/actions/workflows/ci.yml/badge.svg?branch=master&event=push" align="right"/></a>
 
-[`ghcr.io/pg9182/northstar-dedicated:1-tf2.0.11.0`](https://ghcr.io/pg9182/northstar-dedicated)
-
 ## Features
 
 - **Much more efficient** than the running the server on Windows in general, especially around RAM usage.
@@ -424,16 +422,16 @@ To persist save data from mods, mount a folder read-write to `/mnt/save_data` or
 
 The following environment variables are mapped to convars or command-line arguments as necessary and will continue to be supported in releases of the image with the same major version. The default values are based on official Northstar releases and can be found in [nsinit.go](./src/entrypoint/nsinit.go).
 
-| Environment variable      | Description |
-| ---                       | --- |
-| NS_SERVER_NAME            | **Required.** The server name to show in the server browser. |
-| NS_SERVER_DESC            | The server description to show in the server browser. |
-| NS_SERVER_PASSWORD        | The password for the server. If empty, the server is public. |
-| NS_PORT                   | The UDP game port. Must match with the forwarded port and be accessible from the default external IP. |
-| NS_PORT_AUTH              | **Not for Northstar v1.13 and later.** The TCP player authentication port. Must match with the forwarded port and be accessible from the default external IP. |
-| NS_MASTERSERVER_URL       | The base URL of the master server. |
-| NS_MASTERSERVER_REGISTER  | True/false for whether the server should register with the master server. If false, you will probably want to set NS_INSECURE to true. |
-| NS_INSECURE               | Whether to allow unauthenticated direct connections to the server. |
+| Environment variable     | Description                                                                                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NS_SERVER_NAME           | **Required.** The server name to show in the server browser.                                                                                                  |
+| NS_SERVER_DESC           | The server description to show in the server browser.                                                                                                         |
+| NS_SERVER_PASSWORD       | The password for the server. If empty, the server is public.                                                                                                  |
+| NS_PORT                  | The UDP game port. Must match with the forwarded port and be accessible from the default external IP.                                                         |
+| NS_PORT_AUTH             | **Not for Northstar v1.13 and later.** The TCP player authentication port. Must match with the forwarded port and be accessible from the default external IP. |
+| NS_MASTERSERVER_URL      | The base URL of the master server.                                                                                                                            |
+| NS_MASTERSERVER_REGISTER | True/false for whether the server should register with the master server. If false, you will probably want to set NS_INSECURE to true.                        |
+| NS_INSECURE              | Whether to allow unauthenticated direct connections to the server.                                                                                            |
 
 In `NS_SERVER_NAME` and `NS_SERVER_DESC`, `{{hostname}}` will be replaced with the container's hostname (usually a short random string). This is useful to easily start and identify multiple instances dynamically, or to match instances with container logs.
 
@@ -467,8 +465,8 @@ services:
     pull_policy: always
     environment:
       - NS_PORT=37015
-      - 'NS_SERVER_NAME=your server name'
-      - 'NS_SERVER_DESC=your server description'
+      - "NS_SERVER_NAME=your server name"
+      - "NS_SERVER_DESC=your server description"
       - |
         NS_EXTRA_ARGUMENTS=
         +setplaylist private_match
@@ -479,7 +477,7 @@ services:
     volumes:
       - /path/to/titanfall:/mnt/titanfall:ro
     ports:
-      - '37015:37015/udp'
+      - "37015:37015/udp"
     restart: always
 ```
 
@@ -488,8 +486,7 @@ Example configuration (complex):
 ```yml
 version: "3.9"
 
-x-logging:
-  &logging
+x-logging: &logging
   logging:
     driver: "json-file"
     options:
@@ -498,13 +495,13 @@ x-logging:
 
 services:
   northstar1:
-    << : *logging
+    <<: *logging
     image: ghcr.io/pg9182/northstar-dedicated:1-tf2.0.11.0-ns1.6.3
     pull_policy: always
     environment:
       - NS_PORT=37015
-      - 'NS_SERVER_NAME=your server name, possibly with {{hostname}}'
-      - 'NS_SERVER_DESC=your server description, which can also include {{hostname}}'
+      - "NS_SERVER_NAME=your server name, possibly with {{hostname}}"
+      - "NS_SERVER_DESC=your server description, which can also include {{hostname}}"
       - NS_RETURN_TO_LOBBY=0
       - NS_INSECURE=0
       - |
@@ -526,7 +523,7 @@ services:
       - ./mods/Fifty.ServerChatCommands:/mnt/mods/Fifty.ServerChatCommands:ro
       - ./plugins/whatever.dll:/mnt/plugins/whatever.dll
     ports:
-      - '37015:37015/udp'
+      - "37015:37015/udp"
     restart: always
 ```
 
