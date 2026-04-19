@@ -113,7 +113,7 @@ func (n *NSOverlay) mergeNS(p string) error {
 			return err
 		}
 		switch filepath.ToSlash(r) {
-		case "R2Northstar/mods/Northstar.CustomServers/mod/cfg/autoexec_ns_dedicatedserver.cfg":
+		case "R2Northstar/mods/Northstar.CustomServers/mod/cfg/autoexec_ns_server.cfg":
 			return os.WriteFile(filepath.Join(n.Path, r), nil, 0666)
 		case "R2Northstar/placeholder_playerdata.pdata":
 			// northstar after v1.10.0 doesn't need this file anymore
