@@ -32,7 +32,6 @@ package() {
     rm -rf "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.Client" \
            "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.Custom" \
            "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.CustomServers"
-    # remove all files in Northstar.CustomServers except for the mod/maps/graphs
     install -d "$pkgdir/usr/lib/northstar/R2Northstar/mods"
     cp -r "$srcdir/NorthstarMods/Northstar.Client" "$pkgdir/usr/lib/northstar/R2Northstar/mods/"
     cp -r "$srcdir/NorthstarMods/Northstar.Custom" "$pkgdir/usr/lib/northstar/R2Northstar/mods/"
