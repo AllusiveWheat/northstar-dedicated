@@ -55,7 +55,7 @@ func (n *NSOverlay) Delete() error {
 }
 
 func (n *NSOverlay) Executable() string {
-	return "r2ds.exe"
+	return "NorthstarLauncher.exe"
 }
 
 func (n *NSOverlay) Autoexec() string {
