@@ -22,9 +22,19 @@ check() {
 } 
 
 package() {
-	rm "$srcdir"/*.zip
-	mkdir -p "$pkgdir/usr/lib/northstar"
-	cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
+    git clone https://github.com/AllusiveWheat/NorthstarMods "$srcdir/NorthstarMods"
+    git -C "$srcdir/NorthstarMods" pull
+    rm -f "$srcdir"/*.zip
+    mkdir -p "$pkgdir/usr/lib/northstar"
+    cp -r "$srcdir/." "$pkgdir/usr/lib/northstar/"
+    rm -rf "$pkgdir/usr/lib/northstar/NorthstarMods"
+    rm -rf "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.Client" \
+           "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.Custom" \
+           "$pkgdir/usr/lib/northstar/R2Northstar/mods/Northstar.CustomServers"
+    install -d "$pkgdir/usr/lib/northstar/R2Northstar/mods"
+    cp -r "$srcdir/NorthstarMods/Northstar.Client" "$pkgdir/usr/lib/northstar/R2Northstar/mods/"
+    cp -r "$srcdir/NorthstarMods/Northstar.Custom" "$pkgdir/usr/lib/northstar/R2Northstar/mods/"
+    cp -r "$srcdir/NorthstarMods/Northstar.CustomServers" "$pkgdir/usr/lib/northstar/R2Northstar/mods/"
 }
 sha512sums="
   4a11e92a127cf96b9c721cd434f6e5d9a45f83452efb7d38a158ffdca503e4c4df85e3d5b8afb8d8884b1adbaf09abed69e5ba4c1029e6c198175aa766e2b08f Northstar.release.v$pkgver.zip
