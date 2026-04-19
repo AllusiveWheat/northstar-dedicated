@@ -9,6 +9,7 @@ pkgdesc="Northstar binaries and mods"
 url="https://github.com/R2Ion/Ion"
 license="MIT"
 
+
 arch="x86_64"
 source="https://github.com/R2Northstar/Northstar/releases/download/v${pkgver_ns}/Northstar.release.v${pkgver_ns}.zip"
 
